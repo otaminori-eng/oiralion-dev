@@ -1,0 +1,21 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+
+# 環境変数・秘密情報
+.env
+.env.*
+
+# OS・エディタ
+.DS_Store
+.idea/
+.vscode/
