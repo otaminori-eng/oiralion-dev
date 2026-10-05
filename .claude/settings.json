@@ -30,6 +30,8 @@
 			"Bash(terraform state *)",
 			"Bash(git push --force*)",
 			"Bash(git push -f*)",
+			"Bash(git commit * -n*)",
+			"Bash(git commit -n*)",
 			"Bash(* --no-verify*)",
 			"Bash(rm -rf *)",
 			"Bash(curl *)",
