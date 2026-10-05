@@ -1,1 +1,2 @@
 # oiralion-dev
+このリポジトリはota minoriのポートフォリオ
