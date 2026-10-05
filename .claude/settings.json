@@ -1,0 +1,75 @@
+{
+	"permissions": {
+		"allow": ["Bash(pnpm check)", "Bash(pnpm check:fix)"],
+		"ask": [
+			"Bash(git push)",
+			"Bash(git push *)",
+			"Bash(gh pr create *)",
+			"Bash(gh pr merge *)",
+			"Bash(pnpm add *)",
+			"Bash(mise use *)"
+		],
+		"deny": [
+			"Read(**/.env)",
+			"Read(**/.env.*)",
+			"Read(**/*.pem)",
+			"Read(**/*.key)",
+			"Read(~/.aws/**)",
+			"Read(~/.ssh/**)",
+			"Read(~/.npmrc)",
+			"Read(~/.config/gh/**)",
+			"Read(~/.git-credentials)",
+			"Read(~/.netrc)",
+			"Edit(./.claude/settings.json)",
+			"Edit(~/.claude/settings.json)",
+			"Edit(./lefthook.yml)",
+			"Edit(./.github/workflows/**)",
+			"Edit(./.claude/settings.local.json)",
+			"Edit(./.claude/hooks/**)",
+			"Edit(./.claude/skills/**)",
+			"Bash(aws *)",
+			"Bash(terraform apply)",
+			"Bash(terraform apply *)",
+			"Bash(terraform destroy)",
+			"Bash(terraform destroy *)",
+			"Bash(terraform import *)",
+			"Bash(terraform state *)",
+			"Bash(git push --force*)",
+			"Bash(git push -f*)",
+			"Bash(git commit * -n*)",
+			"Bash(git commit -n*)",
+			"Bash(* --no-verify*)",
+			"Bash(rm -rf *)",
+			"Bash(curl *)",
+			"Bash(wget *)",
+			"Bash(sudo *)"
+		],
+		"disableBypassPermissionsMode": "disable"
+	},
+	"sandbox": {
+		"enabled": true,
+		"allowUnsandboxedCommands": false,
+		"network": {
+			"allowedDomains": [
+				"github.com",
+				"*.github.com",
+				"*.githubusercontent.com",
+				"registry.npmjs.org",
+				"registry.terraform.io",
+				"releases.hashicorp.com"
+			]
+		},
+		"credentials": {
+			"envVars": [
+				{ "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
+				{ "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
+				{ "name": "AWS_SESSION_TOKEN", "mode": "deny" },
+				{ "name": "NPM_TOKEN", "mode": "deny" },
+				{ "name": "GH_TOKEN", "mode": "deny" },
+				{ "name": "GITHUB_TOKEN", "mode": "deny" }
+			]
+		}
+	},
+	"enableAllProjectMcpServers": false,
+	"language": "japanese"
+}

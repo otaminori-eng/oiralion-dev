@@ -20,3 +20,6 @@ crash.log
 .DS_Store
 .idea/
 .vscode/
+
+# Claude Code
+.claude/settings.local.json
