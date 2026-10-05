@@ -21,7 +21,7 @@
 			"Edit(./lefthook.yml)",
 			"Edit(./.github/workflows/**)",
 			"Bash(aws *)",
-"Bash(terraform apply)",
+			"Bash(terraform apply)",
 			"Bash(terraform apply *)",
 			"Bash(terraform destroy)",
 			"Bash(terraform destroy *)",
