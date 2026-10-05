@@ -8,5 +8,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15"
-	}
+	},
+	hoge
 }
