@@ -17,10 +17,16 @@
 			"Read(~/.aws/**)",
 			"Read(~/.ssh/**)",
 			"Read(~/.npmrc)",
+			"Read(~/.config/gh/**)",
+			"Read(~/.git-credentials)",
+			"Read(~/.netrc)",
 			"Edit(./.claude/settings.json)",
 			"Edit(~/.claude/settings.json)",
 			"Edit(./lefthook.yml)",
 			"Edit(./.github/workflows/**)",
+			"Edit(./.claude/settings.local.json)",
+			"Edit(./.claude/hooks/**)",
+			"Edit(./.claude/skills/**)",
 			"Bash(aws *)",
 			"Bash(terraform apply)",
 			"Bash(terraform apply *)",
@@ -58,7 +64,9 @@
 				{ "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
 				{ "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
 				{ "name": "AWS_SESSION_TOKEN", "mode": "deny" },
-				{ "name": "NPM_TOKEN", "mode": "deny" }
+				{ "name": "NPM_TOKEN", "mode": "deny" },
+				{ "name": "GH_TOKEN", "mode": "deny" },
+				{ "name": "GITHUB_TOKEN", "mode": "deny" }
 			]
 		}
 	},
