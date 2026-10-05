@@ -1,0 +1,12 @@
+{
+	"name": "oiralion-dev",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"check": "biome check .",
+		"check:fix": "biome check --write ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.15"
+	}
+}
