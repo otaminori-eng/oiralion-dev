@@ -21,8 +21,8 @@
 
 ## ディレクトリ構成
 - frontend/：サイト本体
-  infra/：S3・CloudFront・ACM・Route 53
-  bootstrap/：GitHub Actions用のOIDCとロール
+- infra/：S3・CloudFront・ACM・Route 53
+- bootstrap/：GitHub Actions用のOIDCとロール
 
 ## コーディング規約
 - Biomeとterraform fmtで書式チェックを行うので別途レビューは不要
