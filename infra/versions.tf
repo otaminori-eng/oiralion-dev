@@ -25,3 +25,15 @@ provider "aws" {
     }
   }
 }
+
+# 証明書用
+provider "aws" {
+  alias  = "us_east_1"
+  region = "us-east-1"
+  default_tags {
+    tags = {
+      Project   = "oiralion-dev"
+      ManagedBy = "terraform"
+    }
+  }
+}
