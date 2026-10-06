@@ -3,10 +3,11 @@
 
 ## ディレクトリ構成
 
-| パス        | 内容 |
-|:----------|:---|
-| frontend/ | 本体 |
-
+| パス         | 内容 |
+|:-----------|:---|
+| frontend/  | 本体 |
+| infra/     | S3・CloudFront・ACM・Route 53 |
+| bootstrap/ | GitHub Actions用のOIDCとロール |
 ※掲載コンテンツは非公開リポジトリで管理
 
 ## 技術スタック
@@ -17,15 +18,17 @@
 * テスト
 * インフラ
   * AWS
-  * terraform
+  * Terraform
 * CI/CD
-  * Github Actions
+  * GitHub Actions
 * 開発ツール
   * [mise](https://mise.jdx.dev/)
   * [pnpm](https://pnpm.io/)
   * [biome](https://biomejs.dev/ja/)
   * [lefthook](https://lefthook.dev/)
   * [gitleaks](https://github.com/gitleaks/gitleaks)
+  * [actionlint](https://github.com/rhysd/actionlint)
+  * [Trivy](https://trivy.dev/)
 
 ## セットアップ
 
