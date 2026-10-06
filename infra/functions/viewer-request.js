@@ -26,8 +26,8 @@ function buildQuery(querystring) {
 	for (const key in querystring) {
 		const entry = querystring[key];
 		const values = entry.multiValue ? entry.multiValue : [entry];
-		for (const v of values) {
-			parts.push(`${key}=${v.value}`);
+		for (let i = 0; i < values.length; i++) {
+			parts.push(`${key}=${values[i].value}`);
 		}
 	}
 	return parts.length > 0 ? `?${parts.join("&")}` : "";
