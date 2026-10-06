@@ -18,8 +18,10 @@ jobs:
       - run: pnpm exec biome ci .
       - run: terraform fmt -check -recursive
       - run: |
-          terraform -chdir=infra init -backend=false
-          terraform -chdir=infra validate
+          for dir in infra bootstrap; do
+            terraform -chdir="$dir" init -backend=false
+            terraform -chdir="$dir" validate
+          done
       - run: actionlint
   gitleaks:
     runs-on: ubuntu-latest
