@@ -1,5 +1,4 @@
 # プロジェクト説明
-``
 ## リポジトリ概要
 - フリーランスエンジニアのプロフィールサイトのソースコードリポジトリ
 - エージェント・採用担当者向けで、Basic認証付きで公開する
@@ -22,6 +21,8 @@
 
 ## ディレクトリ構成
 - frontend/：サイト本体
+  infra/：S3・CloudFront・ACM・Route 53
+  bootstrap/：GitHub Actions用のOIDCとロール
 
 ## コーディング規約
 - Biomeとterraform fmtで書式チェックを行うので別途レビューは不要
