@@ -17,6 +17,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec biome ci .
       - run: terraform fmt -check -recursive
+      - run: |
+          terraform -chdir=infra init -backend=false
+          terraform -chdir=infra validate
       - run: actionlint
   gitleaks:
     runs-on: ubuntu-latest
