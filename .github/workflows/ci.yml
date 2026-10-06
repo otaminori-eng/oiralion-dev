@@ -16,12 +16,6 @@ jobs:
       - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec biome ci .
-      - run: terraform fmt -check -recursive
-      - run: |
-          for dir in infra bootstrap; do
-            terraform -chdir="$dir" init -backend=false
-            terraform -chdir="$dir" validate
-          done
       - run: actionlint
   gitleaks:
     runs-on: ubuntu-latest
@@ -34,3 +28,27 @@ jobs:
         env:
           FROM: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
           TO: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c
+      - run: terraform fmt -check -recursive
+      - run: |
+          for dir in infra bootstrap; do
+            terraform -chdir="$dir" init -backend=false
+            terraform -chdir="$dir" validate
+          done
+      - run: trivy config --severity HIGH,CRITICAL --exit-code 1 .
+  required-checks:
+    if: always()
+    needs: [ lint, gitleaks, terraform ]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ "$FAILED" = "true" ]; then
+            echo "失敗またはキャンセルされたジョブがあります"
+            exit 1
+          fi
+        env:
+          FAILED: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}

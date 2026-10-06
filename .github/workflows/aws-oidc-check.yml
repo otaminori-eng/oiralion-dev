@@ -2,9 +2,15 @@ name: AWS OIDC check
 
 on:
   pull_request:
+    paths:
+      - "bootstrap/**"
+      - ".github/workflows/aws-oidc-check.yml"
   push:
     branches: [main]
-
+    paths:
+      - "bootstrap/**"
+      - ".github/workflows/aws-oidc-check.yml"
+  workflow_dispatch:
 permissions:
   id-token: write
 
