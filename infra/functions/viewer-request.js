@@ -4,7 +4,9 @@ const WWW_DOMAIN = `www.${APEX_DOMAIN}`;
 // biome-ignore lint/correctness/noUnusedVariables: CloudFront Functionsが呼び出すエントリポイントのため
 function handler(event) {
 	const request = event.request;
-	const host = request.headers.host ? request.headers.host.value : "";
+	const host = request.headers.host
+		? request.headers.host.value.toLowerCase()
+		: "";
 
 	if (host === WWW_DOMAIN) {
 		return {
