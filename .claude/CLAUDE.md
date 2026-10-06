@@ -6,6 +6,7 @@
 ## Claude Codeへの指示
 ### コマンド
 - ツールのバージョンは mise で管理している（mise.toml）。ツールを追加するときは `mise use --pin` を使う
+- 追加したツールが認証情報を使う場合は、.claude/settings.jsonの内容も見直す
 - `pnpm check`：Biome で lint・書式をチェック / `pnpm check:fix`：自動で直す
 - コミット時に lefthook が gitleaks・Biome・terraform fmt を実行する
 
