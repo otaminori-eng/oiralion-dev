@@ -14,3 +14,7 @@ pre-commit:
     trivy:
       glob: "*.tf"
       run: trivy config --severity HIGH,CRITICAL --exit-code 1 .
+pre-push:
+  commands:
+    test:
+      run: pnpm test
