@@ -4,11 +4,12 @@
 		"ask": [
 			"Bash(git push)",
 			"Bash(git push *)",
+			"Bash(gh *)",
+			"Bash(gh api *)",
 			"Bash(gh pr create *)",
 			"Bash(gh pr merge *)",
 			"Bash(pnpm add *)",
-			"Bash(mise use *)",
-			"Bash(gh api *)"
+			"Bash(mise use *)"
 		],
 		"deny": [
 			"Read(**/.env)",
