@@ -3,4 +3,6 @@ packages:
   - e2e
 allowBuilds:
   protobufjs: false
+  sharp: false
+  unrs-resolver: false
 minimumReleaseAge: 1440 # 24時間
