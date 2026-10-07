@@ -9,6 +9,8 @@
   - TypeScript
   - React
 - テスト
+  - UT: Vitest
+  - E2E: Gauge + Playwright
 - インフラ
   - AWS
   - Terraform
@@ -18,11 +20,14 @@
   - Biome
   - lefthook
   - gitleaks
+  - actionlint
+  - Trivy
 
 ## ディレクトリ構成
 - frontend/：サイト本体
 - infra/：S3・CloudFront・ACM・Route 53
 - bootstrap/：GitHub Actions用のOIDCとロール
+- e2e/：E2Eテスト
 
 ## コーディング規約
 - Biomeとterraform fmtで書式チェックを行うので別途レビューは不要
@@ -39,7 +44,8 @@
 - 個人開発のリポジトリで、開発者は1人
 - 防御は多層で行っている。1つの層の抜け道だけを理由にmustにしない。ただし、秘密情報の漏洩につながり、他の層でも防げないものはmustとする
   - main は GitHub のブランチ保護で守られている（直接 push・force push はできない）
-  - 書式・lint・terraform fmtはCI でも確認している
+  - 以下はCIでも確認している
+    - Biome、actionlint、gitleaks、terraform fmt と validate、Trivy（Terraform の設定・依存ライブラリ）、Vitest
   - Claude Codeはsandbox内で動き、秘密情報のファイルやAWSの認証情報は読めない
 - ツールを導入するときにmise.tomlに追加し、その時点で必要な権限設定を見直す
 

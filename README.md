@@ -3,11 +3,13 @@
 
 ## ディレクトリ構成
 
-| パス         | 内容 |
-|:-----------|:---|
-| frontend/  | 本体 |
+| パス         | 内容                         |
+|:-----------|:---------------------------|
+| frontend/  | 本体                         |
 | infra/     | S3・CloudFront・ACM・Route 53 |
-| bootstrap/ | GitHub Actions用のOIDCとロール |
+| bootstrap/ | GitHub Actions用のOIDCとロール   |
+| e2e/       | E2Eテスト                     |
+
 ※掲載コンテンツは非公開リポジトリで管理
 
 ## 技術スタック
@@ -16,6 +18,8 @@
   * TypeScript
   * React
 * テスト
+  * UT: Vitest
+  * E2E: Gauge + Playwright
 * インフラ
   * AWS
   * Terraform
