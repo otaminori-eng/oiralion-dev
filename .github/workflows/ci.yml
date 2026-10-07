@@ -53,9 +53,32 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c
       - run: trivy fs --scanners vuln --include-dev-deps --severity HIGH,CRITICAL --exit-code 1 .
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter frontend build
+      - run: pnpm --filter e2e exec playwright install --with-deps chromium
+      - run: gauge install
+        working-directory: e2e
+      - name: ビルドした成果物を配信する
+        run: |
+          python3 -m http.server 3000 --directory frontend/out &
+          curl --silent --retry 10 --retry-connrefused --output /dev/null http://localhost:3000/
+      - run: pnpm --filter e2e exec gauge run --env ci specs
+      - name: e2e失敗時にレポートを保存する
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: e2e-reports
+          path: e2e/reports/
+          retention-days: 7
   required-checks:
     if: always()
-    needs: [ lint, gitleaks, terraform, vitest, dependency-scan ]
+    needs: [ lint, gitleaks, terraform, vitest, dependency-scan, e2e ]
     runs-on: ubuntu-latest
     steps:
       - run: |
