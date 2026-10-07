@@ -5,7 +5,8 @@
 	"scripts": {
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
-		"test": "vitest run"
+		"test": "vitest run",
+		"e2e": "pnpm --filter e2e test"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
