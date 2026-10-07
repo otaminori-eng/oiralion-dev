@@ -18,8 +18,8 @@
   * TypeScript
   * React
 * テスト
-  * UT: Vitest
-  * E2E: Gauge + Playwright
+  * Vitest
+  * Gauge + Playwright
 * インフラ
   * AWS
   * Terraform
@@ -48,3 +48,38 @@
     ```shell
     lefthook install
     ```
+
+## テスト
+
+UTはVitest、E2EはGauge + Playwrightで実施している。
+ローカル環境で実施する場合はfrontendを起動した状態で実行する。 結果は `e2e/reports/html-report/index.html` に出力される。
+
+### テスト環境
+
+E2E実行のためにGaugeプラグインとPlaywrightのブラウザをインストールする。
+
+```shell
+cd e2e && gauge install
+pnpm --filter e2e exec playwright install chromium
+```
+
+### テスト実行
+
+#### UT
+```shell
+pnpm test
+```
+
+#### E2E
+```shell
+pnpm e2e
+```
+E2Eの接続先やブラウザは `e2e/env/default/default.properties` に定義している。
+
+| 項目 | 内容 | 初期値 |
+|:--|:--|:--|
+| BASE_URL | テスト対象のURL | http://localhost:3000 |
+| BROWSER | chromium / firefox / webkit（Safari系） | chromium |
+| HEADLESS | true にするとブラウザ画面を表示せずに実行 | false |
+
+ブラウザをwebkit, firefoxで実施する場合は別途ブラウザのインストールが必要。
