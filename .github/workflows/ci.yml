@@ -40,9 +40,16 @@ jobs:
             terraform -chdir="$dir" validate
           done
       - run: trivy config --severity HIGH,CRITICAL --exit-code 1 .
+  vitest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
   required-checks:
     if: always()
-    needs: [ lint, gitleaks, terraform ]
+    needs: [ lint, gitleaks, terraform, vitest ]
     runs-on: ubuntu-latest
     steps:
       - run: |
