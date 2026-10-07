@@ -3,6 +3,6 @@ import { expect, test } from "vitest";
 import Footer from "@/components/Footer";
 
 test("フッターにコピーライトが表示される", () => {
-	render(<Footer />);
-	expect(screen.getByRole("contentinfo")).toHaveTextContent("© 2026 otami");
+  render(<Footer />);
+  expect(screen.getByRole("contentinfo")).toHaveTextContent("© 2026 otami");
 });
