@@ -8,7 +8,9 @@
 - ツールのバージョンは mise で管理している（mise.toml）。ツールを追加するときは `mise use --pin` を使う
 - 追加したツールが認証情報を使う場合は、.claude/settings.jsonの内容も見直す
 - `pnpm check`：Biome で lint・書式をチェック / `pnpm check:fix`：自動で直す
-- コミット時に lefthook が gitleaks・Biome・terraform fmt を実行する
+- lefthookは以下のタイミングで以下の内容を確認している
+  - pre-commit：gitleaks・Biome・terraform fmt・trivy(Terraformの設定)
+  - pre-push：Vitest
 
 ### 進め方
 - 作業はユーザーストーリー単位で行う。作業ブランチを切り、PR からマージする（main には直接 push できない）

@@ -1,4 +1,6 @@
 packages:
   - frontend
   - e2e
+allowBuilds:
+  protobufjs: false
 minimumReleaseAge: 1440 # 24時間
