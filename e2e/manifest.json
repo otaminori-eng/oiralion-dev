@@ -1,4 +1,4 @@
 {
-	"Language": "ts",
-	"Plugins": ["html-report"]
+  "Language": "ts",
+  "Plugins": ["html-report"]
 }
