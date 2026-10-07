@@ -1,5 +1,6 @@
 [tools]
 actionlint = "1.7.12"
+"github:getgauge/gauge" = "1.6.38"
 gitleaks = "8.30.1"
 lefthook = "2.1.16"
 node = "24.21.0"
