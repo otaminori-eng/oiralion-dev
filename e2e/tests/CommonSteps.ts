@@ -1,10 +1,11 @@
 import { expect } from "@playwright/test";
 import { Step } from "gauge-ts";
 import { page } from "./support/browser";
+import { expectPath } from "./support/navigation";
 
-export default class LayoutSteps {
+export default class CommonSteps {
   @Step("<path>を開く")
-  public async gotoTopPage(path: string) {
+  public async gotoPage(path: string) {
     await page().goto(path);
   }
 
@@ -14,5 +15,16 @@ export default class LayoutSteps {
       "content",
       content,
     );
+  }
+
+  @Step("<link>をクリックすると<path>に遷移する")
+  public async goToPathWithLink(link: string, path: string) {
+    await page().getByRole("link", { name: link }).click();
+    await expectPath(path);
+  }
+
+  @Step("本文に<text>が表示されている")
+  public async shouldShowTextInMain(text: string) {
+    await expect(page().getByRole("main").getByText(text)).toBeVisible();
   }
 }

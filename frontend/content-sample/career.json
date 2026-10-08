@@ -1,0 +1,32 @@
+[
+  {
+    "name": "ECサイトリニューアルプロジェクト",
+    "summary": "バックエンドエンジニア・PHP",
+    "startAt": "2025年4月",
+    "endAt": "2026年3月",
+    "team": "BE 5名、FE 2名、デザイナー",
+    "jobRole": "要件定義、顧客折衝、設計、開発、テスト",
+    "description": "ECサイトをリニューアルした\n要件定義〜テストまで関わった",
+    "techStack": "PHP/Laravel/MySQL/AWS"
+  },
+  {
+    "name": "勤怠管理システムのリプレイス",
+    "summary": "フロントエンドエンジニア・TypeScript / Vue.js",
+    "startAt": "2025年4月",
+    "endAt": "2026年3月",
+    "team": "BE 5名、FE 2名、デザイナー",
+    "jobRole": "設計、開発、テスト",
+    "description": "勤怠管理システムのリプレイスを行った\n状態管理が難しかった",
+    "techStack": "TypeScript/Vue.js"
+  },
+  {
+    "name": "飲食店向けCMS改修",
+    "summary": "バックエンドエンジニア・Go/Gin",
+    "startAt": "2025年4月",
+    "endAt": "2026年3月",
+    "team": "BE 10名、FE 5名、デザイナー、PM",
+    "jobRole": "要件定義、顧客折衝、設計、開発、テスト",
+    "description": "勤怠管理システムのリプレイスを行った\n状態管理が難しかった",
+    "techStack": "Go/Gin/Azure"
+  }
+]
