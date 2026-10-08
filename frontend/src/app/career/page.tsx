@@ -23,10 +23,10 @@ const CareerPage = async () => {
                   <dd>{project.team}</dd>
                   <dt>担当業務</dt>
                   <dd>{project.jobRole}</dd>
+                  <dt>使った技術</dt>
+                  <dd>{project.techStack}</dd>
                 </dl>
                 <p className="whitespace-pre-line">{project.description}</p>
-                <dt>使った技術</dt>
-                <dd>{project.techStack}</dd>
               </details>
             </li>
           ))}

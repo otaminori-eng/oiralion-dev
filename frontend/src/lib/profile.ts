@@ -1,7 +1,6 @@
 import { readContent } from "./readContent";
 
 export type Profile = {
-  name: string;
   location: string;
   workingConditions: string;
   availability: string;

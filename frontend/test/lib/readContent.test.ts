@@ -1,4 +1,4 @@
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
@@ -14,6 +14,7 @@ describe("readContent", () => {
 
   afterEach(async () => {
     vi.unstubAllEnvs();
+    vi.restoreAllMocks();
     await rm(root, { recursive: true, force: true });
   });
 
@@ -30,5 +31,22 @@ describe("readContent", () => {
 
   test("ファイルがないときはエラーになる", async () => {
     await expect(readContent("missing.json")).rejects.toThrow();
+  });
+
+  test("本番でCONTENT_DIRがないときはエラーになる", async () => {
+    vi.stubEnv("APP_ENV", "prd");
+    vi.stubEnv("CONTENT_DIR", undefined);
+    await expect(readContent("test.json")).rejects.toThrow("CONTENT_DIR");
+  });
+
+  test("本番以外でCONTENT_DIRがないときはcontent-sampleを読む", async () => {
+    vi.stubEnv("CONTENT_DIR", undefined);
+    vi.spyOn(process, "cwd").mockReturnValue(root);
+    await mkdir(path.join(root, "content-sample"));
+    await writeFile(
+      path.join(root, "content-sample", "test.json"),
+      JSON.stringify({ name: "サンプル" }),
+    );
+    expect(await readContent("test.json")).toEqual({ name: "サンプル" });
   });
 });

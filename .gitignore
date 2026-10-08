@@ -23,3 +23,6 @@ crash.log
 
 # Claude Code
 .claude/settings.local.json
+
+# content
+frontend/content/

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { getProfile } from "@/lib/profile";
 
-export default function Home() {
+export default async function Home() {
+  const profile = await getProfile();
   return (
     <main>
       <div>
@@ -9,7 +11,7 @@ export default function Home() {
           <br />
           otamiです。
         </h1>
-        <span>神奈川県在住のWebエンジニアです。</span>
+        <span>{profile.location}在住のWebエンジニアです。</span>
         <Link href="/career">経歴を見る</Link>
         <Link href="/skills">スキルを見る</Link>
       </div>

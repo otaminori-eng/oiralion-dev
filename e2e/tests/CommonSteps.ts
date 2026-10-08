@@ -24,7 +24,7 @@ export default class CommonSteps {
   }
 
   @Step("本文に<text>が表示されている")
-  public async shouldShowTextInHeader(text: string) {
+  public async shouldShowTextInMain(text: string) {
     await expect(page().getByRole("main").getByText(text)).toBeVisible();
   }
 }
