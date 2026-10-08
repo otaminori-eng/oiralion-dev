@@ -2,9 +2,9 @@ import { expect } from "@playwright/test";
 import { Step } from "gauge-ts";
 import { page } from "./support/browser";
 
-export default class LayoutSteps {
+export default class CommonSteps {
   @Step("<path>を開く")
-  public async gotoTopPage(path: string) {
+  public async gotoPage(path: string) {
     await page().goto(path);
   }
 
@@ -14,5 +14,12 @@ export default class LayoutSteps {
       "content",
       content,
     );
+  }
+
+  @Step("<link>をクリックすると<path>に遷移する")
+  public async goToPathWithLink(link: string, path: string) {
+    await page().getByRole("link", { name: link }).click();
+    const expected = path.endsWith("/") ? path : `${path}/`;
+    await expect.poll(() => new URL(page().url()).pathname).toBe(expected);
   }
 }
