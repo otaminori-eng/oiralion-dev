@@ -6,8 +6,8 @@ describe("getProfile", () => {
     const profile = await getProfile();
     expect(profile).toEqual({
       location: "サンプル県",
-      days: "週3日",
-      startFrom: "9999年1月〜",
+      workingConditions: "週3日",
+      availability: "9999年1月〜",
       role: "バックエンド・フロントエンド",
       value: "猫2匹と暮らしています",
     });

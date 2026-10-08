@@ -3,8 +3,8 @@ import { readContent } from "./readContent";
 export type Profile = {
   name: string;
   location: string;
-  days: string;
-  startFrom: string;
+  workingConditions: string;
+  availability: string;
   role: string;
   value: string;
 };

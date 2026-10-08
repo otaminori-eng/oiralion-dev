@@ -1,4 +1,4 @@
-import { getProfile } from "@/lib/content";
+import { getProfile } from "@/lib/profile";
 
 const AboutPage = async () => {
   const profile = await getProfile();
@@ -11,8 +11,12 @@ const AboutPage = async () => {
           <td>{profile.location}</td>
         </tr>
         <tr>
+          <th>稼働条件</th>
+          <td>{profile.days}</td>
+        </tr>
+        <tr>
           <th>開始時期</th>
-          <td>{profile.startFrom}</td>
+          <td>{profile.availability}</td>
         </tr>
         <tr>
           <th>担当業務</th>
