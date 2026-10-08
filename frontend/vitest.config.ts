@@ -12,5 +12,8 @@ export default defineConfig({
     environment: "jsdom",
     include: ["test/**/*.test.{ts,tsx}"],
     setupFiles: ["./test/setup.ts"],
+    env: {
+      CONTENT_DIR: path.resolve(import.meta.dirname, "content-sample"),
+    },
   },
 });

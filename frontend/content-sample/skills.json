@@ -1,0 +1,49 @@
+[
+  {
+    "category": "バックエンド",
+    "items": [
+      {
+        "name": "PHP"
+      },
+      {
+        "name": "Java"
+      }
+    ]
+  },
+  {
+    "category": "フロントエンド",
+    "items": [
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "jQuery"
+      }
+    ]
+  },
+  {
+    "category": "データベース",
+    "items": [
+      {
+        "name": "MySQL"
+      },
+      {
+        "name": "PostgreSQL"
+      }
+    ]
+  },
+  {
+    "category": "インフラ",
+    "items": [
+      {
+        "name": "AWS"
+      },
+      {
+        "name": "オンプレミス"
+      }
+    ]
+  }
+]
