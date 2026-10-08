@@ -12,7 +12,7 @@ const AboutPage = async () => {
         </tr>
         <tr>
           <th>稼働条件</th>
-          <td>{profile.days}</td>
+          <td>{profile.workingConditions}</td>
         </tr>
         <tr>
           <th>開始時期</th>

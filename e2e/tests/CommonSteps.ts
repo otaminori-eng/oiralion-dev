@@ -23,8 +23,8 @@ export default class CommonSteps {
     await expect.poll(() => new URL(page().url()).pathname).toBe(expected);
   }
 
-  @Step("<text>が表示されている")
+  @Step("本文に<text>が表示されている")
   public async shouldShowTextInHeader(text: string) {
-    await expect(page().getByText(text)).toBeVisible();
+    await expect(page().getByRole("main").getByText(text)).toBeVisible();
   }
 }
