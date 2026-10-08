@@ -22,4 +22,9 @@ export default class CommonSteps {
     const expected = path.endsWith("/") ? path : `${path}/`;
     await expect.poll(() => new URL(page().url()).pathname).toBe(expected);
   }
+
+  @Step("<text>が表示されている")
+  public async shouldShowTextInHeader(text: string) {
+    await expect(page().getByText(text)).toBeVisible();
+  }
 }
