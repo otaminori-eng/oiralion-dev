@@ -1,6 +1,7 @@
 import { expect } from "@playwright/test";
 import { Step } from "gauge-ts";
 import { page } from "./support/browser";
+import { expectPath } from "./support/navigation";
 
 export default class CommonSteps {
   @Step("<path>を開く")
@@ -19,8 +20,7 @@ export default class CommonSteps {
   @Step("<link>をクリックすると<path>に遷移する")
   public async goToPathWithLink(link: string, path: string) {
     await page().getByRole("link", { name: link }).click();
-    const expected = path.endsWith("/") ? path : `${path}/`;
-    await expect.poll(() => new URL(page().url()).pathname).toBe(expected);
+    await expectPath(path);
   }
 
   @Step("本文に<text>が表示されている")
