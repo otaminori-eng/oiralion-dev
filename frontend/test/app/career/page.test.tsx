@@ -8,8 +8,8 @@ vi.mock("@/lib/career", () => ({ getCareer: vi.fn() }));
 const project: Career[number] = {
   name: "案件A",
   summary: "バックエンド・PHP",
-  startAt: "2025年4月",
-  endAt: "2026年3月",
+  startAt: new Date(2025, 3, 1),
+  endAt: new Date(2026, 2, 1),
   team: "BE 5名",
   jobRole: "設計、開発",
   description: "1行目\n2行目",
@@ -24,16 +24,22 @@ describe("CareerPage", () => {
     expect(screen.queryByRole("list")).not.toBeInTheDocument();
   });
 
-  test("案件ごとに期間・名前・概要が表示され、詳細は閉じている", async () => {
+  test("案件ごとに開始年・期間・名前・概要が表示され、詳細は閉じている", async () => {
     vi.mocked(getCareer).mockResolvedValue([
       project,
-      { ...project, name: "案件B", startAt: "2024年1月", endAt: "2025年3月" },
+      {
+        ...project,
+        name: "案件B",
+        startAt: new Date(2024, 0, 1),
+        endAt: new Date(2025, 2, 1),
+      },
     ]);
     render(await CareerPage());
 
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByRole("heading", { name: "案件A" })).toBeInTheDocument();
     expect(screen.getByText("2024年1月〜2025年3月")).toBeInTheDocument();
+    expect(screen.getByText("2024")).toBeInTheDocument();
     for (const details of screen.getAllByRole("group")) {
       expect(details).not.toHaveAttribute("open");
     }
@@ -46,6 +52,7 @@ describe("CareerPage", () => {
     expect(details).toHaveTextContent("BE 5名");
     expect(details).toHaveTextContent("設計、開発");
     expect(details).toHaveTextContent("1行目");
-    expect(details).toHaveTextContent("PHP/Laravel");
+    expect(details).toHaveTextContent("PHP");
+    expect(details).toHaveTextContent("Laravel");
   });
 });
