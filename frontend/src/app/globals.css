@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-paper: #f6f4ef;
+  --color-card: #ffffff;
+  --color-ink: #1f2026;
+  --color-sub: #575a62;
+  --color-faint: #9c9a93;
+  --color-rule: #dcd8ce;
+  --color-coral: #d9574a;
+  --color-on-coral: #ffffff;
+  --color-coral-dark: #b8392d;
+  --color-coral-tint: #fbeeea;
+  --color-peri: #9fb2dc;
+  --color-peri-tint: #edf1f9;
+  --color-peri-line: #d5ddee;
+  --color-peri-ink: #2d3a5c;
+  --color-navy: #1c2233;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-zen-kaku), sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ページの左右の余白（画面幅に合わせて広がる） */
+@utility px-gutter {
+  padding-inline: clamp(18px, 6vw, 96px);
+}
+
+@layer base {
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-size: 14px;
+    line-height: 1.85;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

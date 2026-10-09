@@ -24,4 +24,16 @@ describe("Navigation", () => {
       "/career",
     );
   });
+
+  test("今いるページのリンクにだけ aria-current が付く", () => {
+    vi.mocked(usePathname).mockReturnValue("/skills/");
+    render(<Navigation />);
+    expect(screen.getByRole("link", { name: "skills" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+    expect(screen.getByRole("link", { name: "about" })).not.toHaveAttribute(
+      "aria-current",
+    );
+  });
 });
