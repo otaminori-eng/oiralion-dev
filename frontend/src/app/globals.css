@@ -16,6 +16,14 @@
   --color-peri-line: #d5ddee;
   --color-peri-ink: #2d3a5c;
   --color-navy: #1c2233;
+
+  /* ヒーローのターミナルの点滅 */
+  --animate-blink: blink 1.1s steps(1, end) infinite;
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 @theme inline {
