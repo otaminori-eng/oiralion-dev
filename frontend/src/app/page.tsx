@@ -12,7 +12,7 @@ export default async function Home() {
     <main className="flex flex-1 flex-col">
       <section className="flex flex-1 flex-col">
         <div className="grid flex-1 items-end gap-6 px-gutter pt-2 md:grid-cols-[0.9fr_1.1fr]">
-          <div className="flex flex-col gap-4 self-center py-4 md:pt-7 md:pb-12">
+          <div className="flex flex-col gap-4 self-center py-4 md:pt-7 md:pb-12 justify-self-center">
             <h1 className="text-[clamp(30px,5vw,48px)] leading-[1.25] tracking-[0.02em]">
               こんにちは、
               <br />
@@ -36,7 +36,7 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <DeskScene className="block h-auto w-full max-w-[440px] justify-self-end md:max-w-[480px]" />
+          <DeskScene className="block h-auto w-full max-w-[440px] justify-self-center md:max-w-[480px]" />
         </div>
         <div className="border-t-[1.5px] border-ink" />
       </section>

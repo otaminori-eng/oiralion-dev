@@ -17,7 +17,7 @@ const AboutPage = async () => {
       <div className="mx-auto max-w-[920px]">
         <PageTitle title="About" description="プロフィール" />
         <div className="grid items-start gap-6 md:grid-cols-[280px_minmax(0,1fr)] md:gap-10">
-          <Portrait className="block h-auto w-full max-w-[280px] rounded-[4px]" />
+          <Portrait className="block h-auto w-full max-w-[280px] justify-self-center rounded-[4px]" />
           <div className="rounded-[4px] border border-rule bg-card px-4 py-1.5 md:px-7">
             <table className="w-full">
               <tbody>
