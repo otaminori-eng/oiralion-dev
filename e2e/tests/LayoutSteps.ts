@@ -28,4 +28,23 @@ export default class LayoutSteps {
       .click();
     await expectPath(path);
   }
+
+  @Step("画面幅をスマホにする")
+  public async useMobileViewport() {
+    await page().setViewportSize({ width: 375, height: 812 });
+  }
+
+  @Step("メニューを開く")
+  public async openMenu() {
+    await page().getByRole("button", { name: "メニューを開く" }).click();
+  }
+
+  @Step("メニューから<link>をクリックすると<path>に遷移する")
+  public async goToPathWithMenu(link: string, path: string) {
+    await page()
+      .getByRole("list", { name: "メニュー" })
+      .getByRole("link", { name: new RegExp(`^${link}`) })
+      .click();
+    await expectPath(path);
+  }
 }
