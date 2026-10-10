@@ -18,20 +18,25 @@ describe("parseYearMonth", () => {
 });
 
 describe("getCareer", () => {
-  test("開始年月と終了年月を日付にして返す", async () => {
-    vi.mocked(readContent).mockResolvedValue([
-      {
-        name: "案件A",
-        summary: "バックエンド・PHP",
-        startAt: "202504",
-        endAt: "202603",
-        team: "BE 5名",
-        jobRole: "設計、開発",
-        description: "説明",
-        techStack: "PHP/Laravel",
-      },
-    ]);
-    const [project] = await getCareer();
+  test("概要と、開始年月・終了年月を日付にした案件を返す", async () => {
+    vi.mocked(readContent).mockResolvedValue({
+      summary: "経歴の概要",
+      projects: [
+        {
+          name: "案件A",
+          summary: "バックエンド・PHP",
+          startAt: "202504",
+          endAt: "202603",
+          team: "BE 5名",
+          jobRole: "設計、開発",
+          description: "説明",
+          techStack: "PHP/Laravel",
+        },
+      ],
+    });
+    const career = await getCareer();
+    expect(career.summary).toBe("経歴の概要");
+    const [project] = career.projects;
     expect(project.name).toBe("案件A");
     expect(project.startAt).toEqual(new Date(2025, 3, 1));
     expect(project.endAt).toEqual(new Date(2026, 2, 1));

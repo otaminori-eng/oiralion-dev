@@ -16,7 +16,15 @@ export type Project = Omit<ProjectResponse, "startAt" | "endAt"> & {
   endAt: Date;
 };
 
-export type Career = Project[];
+type CareerResponse = {
+  summary: string;
+  projects: ProjectResponse[];
+};
+
+export type Career = {
+  summary: string;
+  projects: Project[];
+};
 
 export function parseYearMonth(value: string): Date {
   const match = value.match(/^(\d{4})(\d{2})$/);
@@ -28,10 +36,13 @@ export function parseYearMonth(value: string): Date {
 }
 
 export async function getCareer(): Promise<Career> {
-  const response = await readContent<ProjectResponse[]>("career.json");
-  return response.map((project) => ({
-    ...project,
-    startAt: parseYearMonth(project.startAt),
-    endAt: parseYearMonth(project.endAt),
-  }));
+  const response = await readContent<CareerResponse>("career.json");
+  return {
+    summary: response.summary,
+    projects: response.projects.map((project) => ({
+      ...project,
+      startAt: parseYearMonth(project.startAt),
+      endAt: parseYearMonth(project.endAt),
+    })),
+  };
 }

@@ -10,12 +10,15 @@ const CareerPage = async () => {
   return (
     <main className="px-gutter pb-12">
       <div className="mx-auto max-w-[920px]">
-        <PageTitle title="Career" description="経歴（新しい順）" />
-        {career.length === 0 ? (
+        <PageTitle title="Career" description="これまでの経歴" />
+        {career.summary && (
+          <p className="mb-7 whitespace-pre-line">{career.summary}</p>
+        )}
+        {career.projects.length === 0 ? (
           <p className="text-sub">作成中</p>
         ) : (
           <ul className="overflow-hidden rounded-[4px] border border-rule bg-card [--yc:88px] md:[--yc:112px]">
-            {career.map((project) => (
+            {career.projects.map((project) => (
               <li key={project.name} className="border-rule not-first:border-t">
                 <details className="group bg-[linear-gradient(90deg,var(--color-peri-tint)_0_var(--yc),var(--color-peri-line)_var(--yc)_calc(var(--yc)_+_1px),transparent_calc(var(--yc)_+_1px))]">
                   <summary className="group/summary grid cursor-pointer list-none grid-cols-[var(--yc)_minmax(0,1fr)_14px] items-baseline gap-3 py-[18px] pr-3.5 md:grid-cols-[var(--yc)_minmax(0,1fr)_20px] md:gap-5 md:pr-[22px] [&::-webkit-details-marker]:hidden">

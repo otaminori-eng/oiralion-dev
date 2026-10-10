@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import CareerPage from "@/app/career/page";
-import { type Career, getCareer } from "@/lib/career";
+import { getCareer, type Project } from "@/lib/career";
 
 vi.mock("@/lib/career", () => ({ getCareer: vi.fn() }));
 
-const project: Career[number] = {
+const project: Project = {
   name: "案件A",
   summary: "バックエンド・PHP",
   startAt: new Date(2025, 3, 1),
@@ -17,23 +17,35 @@ const project: Career[number] = {
 };
 
 describe("CareerPage", () => {
+  test("経歴の概要が表示される", async () => {
+    vi.mocked(getCareer).mockResolvedValue({
+      summary: "経歴の概要",
+      projects: [project],
+    });
+    render(await CareerPage());
+    expect(screen.getByText("経歴の概要")).toBeInTheDocument();
+  });
+
   test("経歴がないときは作成中と表示される", async () => {
-    vi.mocked(getCareer).mockResolvedValue([]);
+    vi.mocked(getCareer).mockResolvedValue({ summary: "", projects: [] });
     render(await CareerPage());
     expect(screen.getByText("作成中")).toBeInTheDocument();
     expect(screen.queryByRole("list")).not.toBeInTheDocument();
   });
 
   test("案件ごとに開始年・期間・名前・概要が表示され、詳細は閉じている", async () => {
-    vi.mocked(getCareer).mockResolvedValue([
-      project,
-      {
-        ...project,
-        name: "案件B",
-        startAt: new Date(2024, 0, 1),
-        endAt: new Date(2025, 2, 1),
-      },
-    ]);
+    vi.mocked(getCareer).mockResolvedValue({
+      summary: "",
+      projects: [
+        project,
+        {
+          ...project,
+          name: "案件B",
+          startAt: new Date(2024, 0, 1),
+          endAt: new Date(2025, 2, 1),
+        },
+      ],
+    });
     render(await CareerPage());
 
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
@@ -46,7 +58,10 @@ describe("CareerPage", () => {
   });
 
   test("詳細にチーム・担当業務・説明・使った技術が含まれる", async () => {
-    vi.mocked(getCareer).mockResolvedValue([project]);
+    vi.mocked(getCareer).mockResolvedValue({
+      summary: "",
+      projects: [project],
+    });
     render(await CareerPage());
     const details = screen.getByRole("group");
     expect(details).toHaveTextContent("BE 5名");
