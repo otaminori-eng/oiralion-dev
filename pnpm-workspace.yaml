@@ -6,3 +6,7 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 minimumReleaseAge: 1440 # 24時間
+supportedArchitectures:
+  os: [current, linux]
+  cpu: [current, arm64]
+  libc: [current, glibc]
