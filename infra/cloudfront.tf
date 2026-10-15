@@ -79,6 +79,21 @@ resource "aws_cloudfront_distribution" "site" {
     }
   }
 
+  # S3 は存在しないキーに 403 を返す（ListBucket を許可していないため）ので、404 ページに向ける
+  custom_error_response {
+    error_code            = 403
+    response_code         = 404
+    response_page_path    = "/404.html"
+    error_caching_min_ttl = 10
+  }
+
+  custom_error_response {
+    error_code            = 404
+    response_code         = 404
+    response_page_path    = "/404.html"
+    error_caching_min_ttl = 10
+  }
+
   restrictions {
     geo_restriction {
       restriction_type = "none"
