@@ -20,6 +20,25 @@ function handler(event) {
     };
   }
 
+  const uri = request.uri;
+
+  // Next.js の静的書き出し（trailingSlash: true）は /about/ を about/index.html として出力する
+  if (uri.endsWith("/")) {
+    request.uri = `${uri}index.html`;
+    return request;
+  }
+
+  const lastSegment = uri.substring(uri.lastIndexOf("/") + 1);
+  if (lastSegment.indexOf(".") === -1) {
+    return {
+      statusCode: 301,
+      statusDescription: "Moved Permanently",
+      headers: {
+        location: { value: `${uri}/${buildQuery(request.querystring)}` },
+      },
+    };
+  }
+
   return request;
 }
 
