@@ -21,7 +21,7 @@ const SkillsPage = async () => {
                 <ul className="flex flex-wrap gap-1.5">
                   {skill.items.map((item) => (
                     <li key={item.name}>
-                      <Tag>{item.name}</Tag>
+                      <Tag usage={item.usage}>{item.name}</Tag>
                     </li>
                   ))}
                 </ul>

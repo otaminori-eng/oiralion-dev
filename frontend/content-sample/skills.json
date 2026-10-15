@@ -3,7 +3,8 @@
     "category": "バックエンド",
     "items": [
       {
-        "name": "PHP"
+        "name": "PHP",
+        "usage": "frequent"
       },
       {
         "name": "Java"

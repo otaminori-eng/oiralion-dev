@@ -1,14 +1,12 @@
 import type { ReactNode } from "react";
+import type { SkillUsage } from "@/lib/skills";
 
 type Props = {
   children: ReactNode;
+  usage?: SkillUsage;
 };
 
-const Tag = ({ children }: Props) => {
-  return (
-    <span className="inline-flex items-baseline gap-1.5 rounded-[3px] border border-rule px-[9px] py-[3px] font-mono text-[12.5px] leading-[1.5]">
-      {children}
-    </span>
-  );
+const Tag = ({ children, usage }: Props) => {
+  return <span className={usage ? `tag tag-${usage}` : "tag"}>{children}</span>;
 };
 export default Tag;

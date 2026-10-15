@@ -1,7 +1,10 @@
 import { readContent } from "./readContent";
 
+export type SkillUsage = "frequent" | "regular";
+
 type SkillItem = {
   name: string;
+  usage?: SkillUsage;
 };
 
 type Skill = {

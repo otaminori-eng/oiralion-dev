@@ -44,3 +44,14 @@
     line-height: 1.85;
   }
 }
+
+/* 技術のタグ。Skills では使用頻度（usage）の値をクラス名にする */
+@layer components {
+  .tag {
+    @apply inline-flex items-baseline gap-1.5 rounded-[3px] border border-rule px-[9px] py-[3px] font-mono text-[12.5px] leading-[1.5];
+  }
+  /* よく使ってきた：黒枠 */
+  .tag-frequent {
+    @apply border-ink font-medium;
+  }
+}

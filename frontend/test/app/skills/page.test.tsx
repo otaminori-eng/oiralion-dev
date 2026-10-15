@@ -42,4 +42,22 @@ describe("SkillsPage", () => {
         .map((item) => item.textContent),
     ).toEqual(["スキル3"]);
   });
+
+  test("スキルの使用頻度がタグに渡される", async () => {
+    vi.mocked(getSkills).mockResolvedValue([
+      {
+        category: "カテゴリA",
+        items: [
+          { name: "スキル1", usage: "frequent" },
+          { name: "スキル2", usage: "regular" },
+          { name: "スキル3" },
+        ],
+      },
+    ]);
+    render(await SkillsPage());
+
+    expect(screen.getByText("スキル1")).toHaveClass("tag-frequent");
+    expect(screen.getByText("スキル2")).toHaveClass("tag-regular");
+    expect(screen.getByText("スキル3")).toHaveClass("tag", { exact: true });
+  });
 });
